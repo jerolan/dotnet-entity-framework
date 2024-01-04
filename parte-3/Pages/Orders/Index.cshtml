@@ -1,21 +1,20 @@
 @page
 @model Cf.Dotnet.EntityFramework.Parte3.Pages.Orders.IndexModel
 
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+
+<form method="get">
+    <p>
+        Range Start: 
+        <input type="number" asp-for="RangeStart" />
+        Range End: 
+        <input type="number" asp-for="RangeEnd" />
+        <input type="submit" value="Search" />
+    </p>
+</form>
+
 <table class="table">
     <thead>
         <tr>
@@ -52,5 +51,3 @@
 }
     </tbody>
 </table>
-</body>
-</html>

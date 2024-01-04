@@ -1,19 +1,6 @@
 @page
 @model Cf.Dotnet.EntityFramework.Parte3.Pages.Orders.EditModel
 
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Edit</title>
-</head>
-<body>
-
 <h4>Order</h4>
 <hr />
 <div class="row">
@@ -22,7 +9,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Order.Id" />
             <div class="form-group">
-                <label asp-for="Order.CustomerId" class="control-label"></label>
+                <select asp-for="Order.CustomerId" class="form-control"></select>
                 <select asp-for="Order.CustomerId" class="form-control" asp-items="ViewBag.CustomerId"></select>
                 <span asp-validation-for="Order.CustomerId" class="text-danger"></span>
             </div>
@@ -50,5 +37,3 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-</body>
-</html>

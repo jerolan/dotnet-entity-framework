@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 const string databaseName = "MyDatabaseName";
 
 builder.Services.AddRazorPages();
+
 builder.Services.AddDbContext<DatabaseContext>(options => 
     options.UseSqlite($"Data Source={databaseName}"));
 
