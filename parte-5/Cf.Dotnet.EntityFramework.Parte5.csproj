@@ -14,27 +14,27 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.0"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.0" />
+        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.0"/>
     </ItemGroup>
 
     <ItemGroup>
-      <AdditionalFiles Include="Pages\Error.cshtml" />
-      <AdditionalFiles Include="Pages\Index.cshtml" />
-      <AdditionalFiles Include="Pages\Privacy.cshtml" />
-      <AdditionalFiles Include="Pages\Shared\_Layout.cshtml" />
-      <AdditionalFiles Include="Pages\Shared\_ValidationScriptsPartial.cshtml" />
-      <AdditionalFiles Include="Pages\_ViewImports.cshtml" />
-      <AdditionalFiles Include="Pages\_ViewStart.cshtml" />
+        <AdditionalFiles Include="Pages\Error.cshtml"/>
+        <AdditionalFiles Include="Pages\Index.cshtml"/>
+        <AdditionalFiles Include="Pages\Privacy.cshtml"/>
+        <AdditionalFiles Include="Pages\Shared\_Layout.cshtml"/>
+        <AdditionalFiles Include="Pages\Shared\_ValidationScriptsPartial.cshtml"/>
+        <AdditionalFiles Include="Pages\_ViewImports.cshtml"/>
+        <AdditionalFiles Include="Pages\_ViewStart.cshtml"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Migrations\" />
+        <Folder Include="Migrations\"/>
     </ItemGroup>
 
 </Project>

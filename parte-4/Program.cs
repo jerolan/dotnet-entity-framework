@@ -17,7 +17,7 @@ var customer = new Customer
     Name = "Miguel"
 };
 
-context.Customers.Add(customer); 
+context.Customers.Add(customer);
 context.SaveChanges();
 logger.LogDebug("Customer {CustomerId} created", customer.Id);
 
@@ -26,18 +26,18 @@ var catalogItems = new List<CatalogItem>
 {
     new()
     {
-        Name = "Item 1", 
+        Name = "Item 1",
         Price = 10
     },
     new()
     {
-        Name = "Item 2", 
+        Name = "Item 2",
         Price = 20
     }
 };
 
-context.CatalogItems.AddRange(catalogItems); 
-context.SaveChanges(); 
+context.CatalogItems.AddRange(catalogItems);
+context.SaveChanges();
 logger.LogDebug("Catalog items {CatalogItemIds} created", string.Join(", ", catalogItems.Select(x => x.Id)));
 
 // Búsqueda de un artículo del catálogo por su identificador.
@@ -55,12 +55,12 @@ var catalog = await context.CatalogItems
 // Creación y adición de una orden al contexto.
 var order = new Order
 {
-    CustomerId = customer.Id, 
-    CatalogItemId = catalog.Id, 
-    Quantity = 1 
+    CustomerId = customer.Id,
+    CatalogItemId = catalog.Id,
+    Quantity = 1
 };
 
-context.Orders.Add(order); 
-context.SaveChanges(); 
+context.Orders.Add(order);
+context.SaveChanges();
 
 logger.LogDebug("Order total: {OrderTotal}", order.GetOrderTotal());

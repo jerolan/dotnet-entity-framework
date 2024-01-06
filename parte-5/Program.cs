@@ -8,8 +8,9 @@ const string databaseName = "MyDatabaseName";
 
 builder.Services.AddRazorPages();
 
-builder.Services.AddDbContext<DatabaseContext>(options => 
-    options.UseSqlServer($"Data Source=localhost,1433;User ID=sa;Password=Passw@rd;Database={databaseName};Encrypt=False"));
+builder.Services.AddDbContext<DatabaseContext>(options =>
+    options.UseSqlServer(
+        $"Data Source=localhost,1433;User ID=sa;Password=Passw@rd;Database={databaseName};Encrypt=False"));
 
 var app = builder.Build();
 

@@ -1,63 +1,45 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Cf.Dotnet.EntityFramework.Parte2.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Cf.Dotnet.EntityFramework.Parte2.Models;
-using Cf.Dotnet.EntityFramework.Parte3;
 
-namespace Cf.Dotnet.EntityFramework.Parte3.Pages.Orders
+namespace Cf.Dotnet.EntityFramework.Parte3.Pages.Orders;
+
+public class DeleteModel : PageModel
 {
-    public class DeleteModel : PageModel
+    private readonly DatabaseContext _context;
+
+    public DeleteModel(DatabaseContext context)
     {
-        private readonly Cf.Dotnet.EntityFramework.Parte3.DatabaseContext _context;
+        _context = context;
+    }
 
-        public DeleteModel(Cf.Dotnet.EntityFramework.Parte3.DatabaseContext context)
+    [BindProperty] public Order Order { get; set; } = default!;
+
+    public async Task<IActionResult> OnGetAsync(int? id)
+    {
+        if (id == null) return NotFound();
+
+        var order = await _context.Orders.FirstOrDefaultAsync(m => m.Id == id);
+
+        if (order == null)
+            return NotFound();
+        Order = order;
+        return Page();
+    }
+
+    public async Task<IActionResult> OnPostAsync(int? id)
+    {
+        if (id == null) return NotFound();
+
+        var order = await _context.Orders.FindAsync(id);
+        if (order != null)
         {
-            _context = context;
+            Order = order;
+            _context.Orders.Remove(Order);
+            await _context.SaveChangesAsync();
         }
 
-        [BindProperty]
-        public Order Order { get; set; } = default!;
-
-        public async Task<IActionResult> OnGetAsync(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var order = await _context.Orders.FirstOrDefaultAsync(m => m.Id == id);
-
-            if (order == null)
-            {
-                return NotFound();
-            }
-            else
-            {
-                Order = order;
-            }
-            return Page();
-        }
-
-        public async Task<IActionResult> OnPostAsync(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var order = await _context.Orders.FindAsync(id);
-            if (order != null)
-            {
-                Order = order;
-                _context.Orders.Remove(Order);
-                await _context.SaveChangesAsync();
-            }
-
-            return RedirectToPage("./Index");
-        }
+        return RedirectToPage("./Index");
     }
 }

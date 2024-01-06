@@ -2,26 +2,26 @@
 @model Cf.Dotnet.EntityFramework.Parte3.Pages.Orders.CreateModel
 
 <h4>Order</h4>
-<hr />
+<hr/>
 <div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Order.CustomerId" class="control-label"></label>
-                <select asp-for="Order.CustomerId" class ="form-control" asp-items="ViewBag.CustomerId"></select>
+                <select asp-for="Order.CustomerId" class="form-control" asp-items="ViewBag.CustomerId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Order.CatalogItemId" class="control-label"></label>
-                <select asp-for="Order.CatalogItemId" class ="form-control" asp-items="ViewBag.CatalogItemId"></select>
+                <select asp-for="Order.CatalogItemId" class="form-control" asp-items="ViewBag.CatalogItemId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Order.Quantity" class="control-label"></label>
-                <input asp-for="Order.Quantity" class="form-control" />
+                <input asp-for="Order.Quantity" class="form-control"/>
                 <span asp-validation-for="Order.Quantity" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary"/>
             </div>
         </form>
     </div>
@@ -32,5 +32,5 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

@@ -1,63 +1,45 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Cf.Dotnet.EntityFramework.Parte2.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Cf.Dotnet.EntityFramework.Parte2.Models;
-using Cf.Dotnet.EntityFramework.Parte3;
 
-namespace Cf.Dotnet.EntityFramework.Parte3.Pages.Customers
+namespace Cf.Dotnet.EntityFramework.Parte3.Pages.Customers;
+
+public class DeleteModel : PageModel
 {
-    public class DeleteModel : PageModel
+    private readonly DatabaseContext _context;
+
+    public DeleteModel(DatabaseContext context)
     {
-        private readonly Cf.Dotnet.EntityFramework.Parte3.DatabaseContext _context;
+        _context = context;
+    }
 
-        public DeleteModel(Cf.Dotnet.EntityFramework.Parte3.DatabaseContext context)
+    [BindProperty] public Customer Customer { get; set; } = default!;
+
+    public async Task<IActionResult> OnGetAsync(int? id)
+    {
+        if (id == null) return NotFound();
+
+        var customer = await _context.Customers.FirstOrDefaultAsync(m => m.Id == id);
+
+        if (customer == null)
+            return NotFound();
+        Customer = customer;
+        return Page();
+    }
+
+    public async Task<IActionResult> OnPostAsync(int? id)
+    {
+        if (id == null) return NotFound();
+
+        var customer = await _context.Customers.FindAsync(id);
+        if (customer != null)
         {
-            _context = context;
+            Customer = customer;
+            _context.Customers.Remove(Customer);
+            await _context.SaveChangesAsync();
         }
 
-        [BindProperty]
-        public Customer Customer { get; set; } = default!;
-
-        public async Task<IActionResult> OnGetAsync(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var customer = await _context.Customers.FirstOrDefaultAsync(m => m.Id == id);
-
-            if (customer == null)
-            {
-                return NotFound();
-            }
-            else
-            {
-                Customer = customer;
-            }
-            return Page();
-        }
-
-        public async Task<IActionResult> OnPostAsync(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var customer = await _context.Customers.FindAsync(id);
-            if (customer != null)
-            {
-                Customer = customer;
-                _context.Customers.Remove(Customer);
-                await _context.SaveChangesAsync();
-            }
-
-            return RedirectToPage("./Index");
-        }
+        return RedirectToPage("./Index");
     }
 }

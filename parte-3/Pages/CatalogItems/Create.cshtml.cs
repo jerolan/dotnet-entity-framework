@@ -1,44 +1,33 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Cf.Dotnet.EntityFramework.Parte2.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Cf.Dotnet.EntityFramework.Parte2.Models;
-using Cf.Dotnet.EntityFramework.Parte3;
 
-namespace Cf.Dotnet.EntityFramework.Parte3.Pages.CatalogItems
+namespace Cf.Dotnet.EntityFramework.Parte3.Pages.CatalogItems;
+
+public class CreateModel : PageModel
 {
-    public class CreateModel : PageModel
+    private readonly DatabaseContext _context;
+
+    public CreateModel(DatabaseContext context)
     {
-        private readonly Cf.Dotnet.EntityFramework.Parte3.DatabaseContext _context;
+        _context = context;
+    }
 
-        public CreateModel(Cf.Dotnet.EntityFramework.Parte3.DatabaseContext context)
-        {
-            _context = context;
-        }
+    [BindProperty] public CatalogItem CatalogItem { get; set; } = default!;
 
-        public IActionResult OnGet()
-        {
-            return Page();
-        }
+    public IActionResult OnGet()
+    {
+        return Page();
+    }
 
-        [BindProperty]
-        public CatalogItem CatalogItem { get; set; } = default!;
+    // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+    public async Task<IActionResult> OnPostAsync()
+    {
+        if (!ModelState.IsValid) return Page();
 
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-        public async Task<IActionResult> OnPostAsync()
-        {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+        _context.CatalogItems.Add(CatalogItem);
+        await _context.SaveChangesAsync();
 
-            _context.CatalogItems.Add(CatalogItem);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
-        }
+        return RedirectToPage("./Index");
     }
 }

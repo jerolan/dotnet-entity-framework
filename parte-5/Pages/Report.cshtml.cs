@@ -7,14 +7,14 @@ namespace Cf.Dotnet.EntityFramework.Parte5.Pages;
 
 public class ReportModel : PageModel
 {
-    private readonly Cf.Dotnet.EntityFramework.Parte5.DatabaseContext _context;
-    
-    public IList<ReportItem> ReportItem { get; set; }
+    private readonly DatabaseContext _context;
 
-    public ReportModel(Cf.Dotnet.EntityFramework.Parte5.DatabaseContext context)
+    public ReportModel(DatabaseContext context)
     {
         _context = context;
     }
+
+    public IList<ReportItem> ReportItem { get; set; }
 
     public async Task OnGetAsync()
     {
@@ -22,7 +22,7 @@ public class ReportModel : PageModel
             .SqlQueryRaw<ReportItem>("select * from OrderReports")
             .ToListAsync();
     }
-    
+
     public async Task<IActionResult> OnPostRunSPAsync()
     {
         await _context.Database.ExecuteSqlRawAsync("EXEC GenerateOrderReports");

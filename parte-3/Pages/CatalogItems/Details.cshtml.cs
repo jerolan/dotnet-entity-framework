@@ -1,43 +1,29 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Cf.Dotnet.EntityFramework.Parte2.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Cf.Dotnet.EntityFramework.Parte2.Models;
-using Cf.Dotnet.EntityFramework.Parte3;
 
-namespace Cf.Dotnet.EntityFramework.Parte3.Pages.CatalogItems
+namespace Cf.Dotnet.EntityFramework.Parte3.Pages.CatalogItems;
+
+public class DetailsModel : PageModel
 {
-    public class DetailsModel : PageModel
+    private readonly DatabaseContext _context;
+
+    public DetailsModel(DatabaseContext context)
     {
-        private readonly Cf.Dotnet.EntityFramework.Parte3.DatabaseContext _context;
+        _context = context;
+    }
 
-        public DetailsModel(Cf.Dotnet.EntityFramework.Parte3.DatabaseContext context)
-        {
-            _context = context;
-        }
+    public CatalogItem CatalogItem { get; set; } = default!;
 
-        public CatalogItem CatalogItem { get; set; } = default!;
+    public async Task<IActionResult> OnGetAsync(int? id)
+    {
+        if (id == null) return NotFound();
 
-        public async Task<IActionResult> OnGetAsync(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var catalogitem = await _context.CatalogItems.FirstOrDefaultAsync(m => m.Id == id);
-            if (catalogitem == null)
-            {
-                return NotFound();
-            }
-            else
-            {
-                CatalogItem = catalogitem;
-            }
-            return Page();
-        }
+        var catalogitem = await _context.CatalogItems.FirstOrDefaultAsync(m => m.Id == id);
+        if (catalogitem == null)
+            return NotFound();
+        CatalogItem = catalogitem;
+        return Page();
     }
 }

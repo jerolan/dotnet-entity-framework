@@ -7,31 +7,32 @@
 
 <form method="get">
     <p>
-        Range Start: 
-        <input type="number" asp-for="RangeStart" />
-        Range End: 
-        <input type="number" asp-for="RangeEnd" />
-        <input type="submit" value="Search" />
+        Range Start:
+        <input type="number" asp-for="RangeStart"/>
+        Range End:
+        <input type="number" asp-for="RangeEnd"/>
+        <input type="submit" value="Search"/>
     </p>
 </form>
 
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Order[0].Quantity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Order[0].Customer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Order[0].CatalogItem)
-            </th>
-            <th></th>
-        </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Order[0].Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order[0].Customer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order[0].CatalogItem)
+        </th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Order) {
+    @foreach (var item in Model.Order)
+    {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Quantity)
@@ -48,6 +49,6 @@
                 <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
-}
+    }
     </tbody>
 </table>
