@@ -11,6 +11,6 @@ public partial class Order
     /// </summary>
     public decimal GetOrderTotal()
     {
-        return CatalogItem.Price * Quantity;
+        return this.CatalogItem.Price * this.Quantity;
     }
 }
