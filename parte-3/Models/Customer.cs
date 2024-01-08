@@ -1,4 +1,4 @@
-namespace Cf.Dotnet.EntityFramework.Parte2.Models;
+namespace Cf.Dotnet.EntityFramework.Parte3.Models;
 
 /// <summary>
 ///     Representa un cliente en el contexto del negocio.
@@ -27,6 +27,5 @@ public class Customer
     /// <value>
     ///     Las órdenes del cliente. Esta colección puede estar vacía, pero no nula.
     /// </value>
-    public ICollection<Order> Orders { get; set; } =
-        new List<Order>(); // Inicializa con una lista vacía para evitar que sea nula.
+    public ICollection<Order> Orders { get; set; } = new List<Order>(); // Inicializa con una lista vacía para evitar que sea nula.
 }

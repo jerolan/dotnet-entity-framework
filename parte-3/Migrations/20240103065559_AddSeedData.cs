@@ -4,7 +4,7 @@
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace Cf.Dotnet.EntityFramework.Parte2.Migrations
+namespace Cf.Dotnet.EntityFramework.Parte3.Migrations
 {
     /// <inheritdoc />
     public partial class AddSeedData : Migration
@@ -19,21 +19,16 @@ namespace Cf.Dotnet.EntityFramework.Parte2.Migrations
                 {
                     { 1, "Cliente A" },
                     { 2, "Cliente B" }
-                });
+                }
+            );
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DeleteData(
-                table: "Customers",
-                keyColumn: "Id",
-                keyValue: 1);
+            migrationBuilder.DeleteData(table: "Customers", keyColumn: "Id", keyValue: 1);
 
-            migrationBuilder.DeleteData(
-                table: "Customers",
-                keyColumn: "Id",
-                keyValue: 2);
+            migrationBuilder.DeleteData(table: "Customers", keyColumn: "Id", keyValue: 2);
         }
     }
 }

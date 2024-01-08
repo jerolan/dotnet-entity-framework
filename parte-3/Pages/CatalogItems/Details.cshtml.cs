@@ -1,4 +1,4 @@
-using Cf.Dotnet.EntityFramework.Parte2.Models;
+using Cf.Dotnet.EntityFramework.Parte3.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -18,7 +18,8 @@ public class DetailsModel : PageModel
 
     public async Task<IActionResult> OnGetAsync(int? id)
     {
-        if (id == null) return NotFound();
+        if (id == null)
+            return NotFound();
 
         var catalogitem = await _context.CatalogItems.FirstOrDefaultAsync(m => m.Id == id);
         if (catalogitem == null)

@@ -1,4 +1,4 @@
-using Cf.Dotnet.EntityFramework.Parte2.Models;
+using Cf.Dotnet.EntityFramework.Parte3.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -14,7 +14,8 @@ public class CreateModel : PageModel
         _context = context;
     }
 
-    [BindProperty] public Order Order { get; set; } = default!;
+    [BindProperty]
+    public Order Order { get; set; } = default!;
 
     public IActionResult OnGet()
     {

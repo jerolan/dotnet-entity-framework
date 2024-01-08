@@ -1,4 +1,4 @@
-using Cf.Dotnet.EntityFramework.Parte2.Models;
+using Cf.Dotnet.EntityFramework.Parte3.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -15,14 +15,17 @@ public class EditModel : PageModel
         _context = context;
     }
 
-    [BindProperty] public Order Order { get; set; } = default!;
+    [BindProperty]
+    public Order Order { get; set; } = default!;
 
     public async Task<IActionResult> OnGetAsync(int? id)
     {
-        if (id == null) return NotFound();
+        if (id == null)
+            return NotFound();
 
         var order = await _context.Orders.FirstOrDefaultAsync(m => m.Id == id);
-        if (order == null) return NotFound();
+        if (order == null)
+            return NotFound();
         Order = order;
         ViewData["CatalogItemId"] = new SelectList(_context.CatalogItems, "Id", "Id");
         ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "Id");
@@ -33,7 +36,8 @@ public class EditModel : PageModel
     // For more details, see https://aka.ms/RazorPagesCRUD.
     public async Task<IActionResult> OnPostAsync()
     {
-        if (!ModelState.IsValid) return Page();
+        if (!ModelState.IsValid)
+            return Page();
 
         _context.Attach(Order).State = EntityState.Modified;
 

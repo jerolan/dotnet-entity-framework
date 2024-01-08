@@ -1,4 +1,4 @@
-using Cf.Dotnet.EntityFramework.Parte2.Models;
+using Cf.Dotnet.EntityFramework.Parte3.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -14,11 +14,14 @@ public class IndexModel : PageModel
         _context = context;
     }
 
-    [BindProperty(SupportsGet = true)] public string SearchString { get; set; }
+    [BindProperty(SupportsGet = true)]
+    public string SearchString { get; set; }
 
-    [BindProperty(SupportsGet = true)] public int? RangeStart { get; set; }
+    [BindProperty(SupportsGet = true)]
+    public int? RangeStart { get; set; }
 
-    [BindProperty(SupportsGet = true)] public int? RangeEnd { get; set; }
+    [BindProperty(SupportsGet = true)]
+    public int? RangeEnd { get; set; }
 
     public IList<Order> Order { get; set; } = default!;
 
@@ -26,13 +29,12 @@ public class IndexModel : PageModel
     {
         var query = _context.Orders.AsQueryable();
 
-        if (RangeStart.HasValue) query = query.Where(o => o.Quantity >= RangeStart.Value);
+        if (RangeStart.HasValue)
+            query = query.Where(o => o.Quantity >= RangeStart.Value);
 
-        if (RangeEnd.HasValue) query = query.Where(x => x.Quantity <= RangeEnd.Value);
+        if (RangeEnd.HasValue)
+            query = query.Where(x => x.Quantity <= RangeEnd.Value);
 
-        Order = await query
-            .Include(o => o.CatalogItem)
-            .Include(o => o.Customer)
-            .ToListAsync();
+        Order = await query.Include(o => o.CatalogItem).Include(o => o.Customer).ToListAsync();
     }
 }

@@ -1,4 +1,4 @@
-using Cf.Dotnet.EntityFramework.Parte2.Models;
+using Cf.Dotnet.EntityFramework.Parte3.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -13,7 +13,8 @@ public class CreateModel : PageModel
         _context = context;
     }
 
-    [BindProperty] public Customer Customer { get; set; } = default!;
+    [BindProperty]
+    public Customer Customer { get; set; } = default!;
 
     public IActionResult OnGet()
     {
@@ -23,7 +24,8 @@ public class CreateModel : PageModel
     // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
     public async Task<IActionResult> OnPostAsync()
     {
-        if (!ModelState.IsValid) return Page();
+        if (!ModelState.IsValid)
+            return Page();
 
         _context.Customers.Add(Customer);
         await _context.SaveChangesAsync();

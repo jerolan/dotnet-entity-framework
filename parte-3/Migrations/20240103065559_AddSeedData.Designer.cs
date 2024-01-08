@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Cf.Dotnet.EntityFramework.Parte2.Migrations
+namespace Cf.Dotnet.EntityFramework.Parte3.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
     [Migration("20240103065559_AddSeedData")]
@@ -19,7 +19,7 @@ namespace Cf.Dotnet.EntityFramework.Parte2.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.0");
 
-            modelBuilder.Entity("Cf.Dotnet.EntityFramework.Parte2.Models.CatalogItem", b =>
+            modelBuilder.Entity("Cf.Dotnet.EntityFramework.Parte3.Models.CatalogItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -37,7 +37,7 @@ namespace Cf.Dotnet.EntityFramework.Parte2.Migrations
                     b.ToTable("CatalogItems");
                 });
 
-            modelBuilder.Entity("Cf.Dotnet.EntityFramework.Parte2.Models.Customer", b =>
+            modelBuilder.Entity("Cf.Dotnet.EntityFramework.Parte3.Models.Customer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -64,7 +64,7 @@ namespace Cf.Dotnet.EntityFramework.Parte2.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Cf.Dotnet.EntityFramework.Parte2.Models.Order", b =>
+            modelBuilder.Entity("Cf.Dotnet.EntityFramework.Parte3.Models.Order", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -88,15 +88,15 @@ namespace Cf.Dotnet.EntityFramework.Parte2.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("Cf.Dotnet.EntityFramework.Parte2.Models.Order", b =>
+            modelBuilder.Entity("Cf.Dotnet.EntityFramework.Parte3.Models.Order", b =>
                 {
-                    b.HasOne("Cf.Dotnet.EntityFramework.Parte2.Models.CatalogItem", "CatalogItem")
+                    b.HasOne("Cf.Dotnet.EntityFramework.Parte3.Models.CatalogItem", "CatalogItem")
                         .WithMany()
                         .HasForeignKey("CatalogItemId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Cf.Dotnet.EntityFramework.Parte2.Models.Customer", "Customer")
+                    b.HasOne("Cf.Dotnet.EntityFramework.Parte3.Models.Customer", "Customer")
                         .WithMany("Orders")
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -107,7 +107,7 @@ namespace Cf.Dotnet.EntityFramework.Parte2.Migrations
                     b.Navigation("Customer");
                 });
 
-            modelBuilder.Entity("Cf.Dotnet.EntityFramework.Parte2.Models.Customer", b =>
+            modelBuilder.Entity("Cf.Dotnet.EntityFramework.Parte3.Models.Customer", b =>
                 {
                     b.Navigation("Orders");
                 });
