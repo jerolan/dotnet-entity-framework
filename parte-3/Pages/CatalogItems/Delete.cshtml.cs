@@ -14,8 +14,7 @@ public class DeleteModel : PageModel
         _context = context;
     }
 
-    [BindProperty]
-    public CatalogItem CatalogItem { get; set; } = default!;
+    [BindProperty] public CatalogItem CatalogItem { get; set; } = default!;
 
     public async Task<IActionResult> OnGetAsync(int? id)
     {

@@ -31,11 +31,11 @@ BEGIN
     -- Luego, inserta nuevos registros en OrderReports.
     -- Estos registros son el resultado de una consulta que combina datos de las tablas Orders y Customers.
     INSERT INTO OrderReports (OrderId, CustomerName, Quantity, ReportDate)
-    SELECT o.Id,           -- Selecciona el ID de la orden.
-           c.Name,         -- Selecciona el nombre del cliente.
-           o.Quantity,     -- Selecciona la cantidad de la orden.
-           GETDATE()       -- Usa la fecha y hora actual para ReportDate.
-    FROM Orders o          -- Desde la tabla Orders.
+    SELECT o.Id,       -- Selecciona el ID de la orden.
+           c.Name,     -- Selecciona el nombre del cliente.
+           o.Quantity, -- Selecciona la cantidad de la orden.
+           GETDATE()   -- Usa la fecha y hora actual para ReportDate.
+    FROM Orders o -- Desde la tabla Orders.
              INNER JOIN
          Customers c ON o.CustomerId = c.Id -- Une la tabla Customers donde los IDs de cliente coincidan.
 END

@@ -15,7 +15,9 @@ public class DatabaseContext : DbContext
     ///     Este constructor es utilizado principalmente por frameworks y herramientas de desarrollo, como por ejemplo, para la
     ///     creación de migraciones.
     /// </remarks>
-    public DatabaseContext() { }
+    public DatabaseContext()
+    {
+    }
 
     /// <summary>
     ///     Constructor que toma opciones de DbContext para configurar el contexto.
@@ -26,7 +28,9 @@ public class DatabaseContext : DbContext
     ///     datos.
     /// </remarks>
     public DatabaseContext(DbContextOptions<DatabaseContext> options)
-        : base(options) { }
+        : base(options)
+    {
+    }
 
     /// <summary>
     ///     Conjunto de entidades de tipo CatalogItem en la base de datos.
@@ -34,7 +38,8 @@ public class DatabaseContext : DbContext
     /// <value>
     ///     Proporciona acceso a las operaciones CRUD para los elementos del catálogo.
     /// </value>
-    public DbSet<CatalogItem> CatalogItems { get; set; } = null!; // Inicializa con null! para indicar que EF se encargará de su inicialización.
+    public DbSet<CatalogItem> CatalogItems { get; set; } =
+        null!; // Inicializa con null! para indicar que EF se encargará de su inicialización.
 
     /// <summary>
     ///     Conjunto de entidades de tipo Order en la base de datos.
@@ -50,5 +55,6 @@ public class DatabaseContext : DbContext
     /// <value>
     ///     Proporciona acceso a las operaciones CRUD para los clientes.
     /// </value>
-    public DbSet<Customer> Customers { get; set; } = null!; // DbSet<Customer> también se inicializa con null!, delegando la inicialización a EF.
+    public DbSet<Customer> Customers { get; set; } =
+        null!; // DbSet<Customer> también se inicializa con null!, delegando la inicialización a EF.
 }

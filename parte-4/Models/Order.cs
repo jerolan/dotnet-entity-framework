@@ -4,7 +4,7 @@ namespace Cf.Dotnet.EntityFramework.Parte4.Models;
 ///     Representa una orden en el contexto del negocio.
 ///     Las entidades parciales permiten extender la funcionalidad de una clase generada por Entity Framework.
 /// </summary>
-public partial class Order
+public class Order
 {
     /// <summary>
     ///     Obtiene el total de la orden.

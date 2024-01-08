@@ -13,8 +13,7 @@ public class CreateModel : PageModel
         _context = context;
     }
 
-    [BindProperty]
-    public Customer Customer { get; set; } = default!;
+    [BindProperty] public Customer Customer { get; set; } = default!;
 
     public IActionResult OnGet()
     {

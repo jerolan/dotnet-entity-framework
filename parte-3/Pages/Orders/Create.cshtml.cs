@@ -14,8 +14,7 @@ public class CreateModel : PageModel
         _context = context;
     }
 
-    [BindProperty]
-    public Order Order { get; set; } = default!;
+    [BindProperty] public Order Order { get; set; } = default!;
 
     public IActionResult OnGet()
     {

@@ -15,8 +15,7 @@ public class EditModel : PageModel
         _context = context;
     }
 
-    [BindProperty]
-    public Order Order { get; set; } = default!;
+    [BindProperty] public Order Order { get; set; } = default!;
 
     public async Task<IActionResult> OnGetAsync(int? id)
     {

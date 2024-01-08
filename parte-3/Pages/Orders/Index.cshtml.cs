@@ -14,14 +14,11 @@ public class IndexModel : PageModel
         _context = context;
     }
 
-    [BindProperty(SupportsGet = true)]
-    public string SearchString { get; set; }
+    [BindProperty(SupportsGet = true)] public string SearchString { get; set; }
 
-    [BindProperty(SupportsGet = true)]
-    public int? RangeStart { get; set; }
+    [BindProperty(SupportsGet = true)] public int? RangeStart { get; set; }
 
-    [BindProperty(SupportsGet = true)]
-    public int? RangeEnd { get; set; }
+    [BindProperty(SupportsGet = true)] public int? RangeEnd { get; set; }
 
     public IList<Order> Order { get; set; } = default!;
 

@@ -6,22 +6,22 @@ using Microsoft.EntityFrameworkCore;
 namespace Cf.Dotnet.EntityFramework.Parte5;
 
 /// <summary>
-/// Contexto de la base de datos para la aplicación, utilizando Entity Framework.
-/// Define las entidades y realiza configuraciones iniciales para el modelo de la base de datos.
+///     Contexto de la base de datos para la aplicación, utilizando Entity Framework.
+///     Define las entidades y realiza configuraciones iniciales para el modelo de la base de datos.
 /// </summary>
 public class DatabaseContext : DbContext
 {
     /// <summary>
-    /// Constructor sin parámetros para el contexto de la base de datos.
-    /// Utilizado principalmente por frameworks y herramientas de desarrollo.
+    ///     Constructor sin parámetros para el contexto de la base de datos.
+    ///     Utilizado principalmente por frameworks y herramientas de desarrollo.
     /// </summary>
     public DatabaseContext()
     {
     }
 
     /// <summary>
-    /// Constructor que toma opciones de DbContext para configurar el contexto.
-    /// Permite inyectar configuraciones específicas, como la cadena de conexión a la base de datos.
+    ///     Constructor que toma opciones de DbContext para configurar el contexto.
+    ///     Permite inyectar configuraciones específicas, como la cadena de conexión a la base de datos.
     /// </summary>
     /// <param name="options">Opciones de configuración para el contexto de la base de datos.</param>
     public DatabaseContext(DbContextOptions<DatabaseContext> options)
@@ -35,8 +35,8 @@ public class DatabaseContext : DbContext
     public DbSet<Customer> Customers { get; set; } = null!;
 
     /// <summary>
-    /// Configura el modelo de la base de datos, incluyendo la generación de datos ficticios iniciales.
-    /// Utiliza AutoBogus para generar datos de prueba automáticamente.
+    ///     Configura el modelo de la base de datos, incluyendo la generación de datos ficticios iniciales.
+    ///     Utiliza AutoBogus para generar datos de prueba automáticamente.
     /// </summary>
     /// <param name="modelBuilder">Constructor de modelos para definir configuraciones del modelo.</param>
     protected override void OnModelCreating(ModelBuilder modelBuilder)

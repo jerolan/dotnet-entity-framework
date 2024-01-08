@@ -13,8 +13,7 @@ public class CreateModel : PageModel
         _context = context;
     }
 
-    [BindProperty]
-    public CatalogItem CatalogItem { get; set; } = default!;
+    [BindProperty] public CatalogItem CatalogItem { get; set; } = default!;
 
     public IActionResult OnGet()
     {

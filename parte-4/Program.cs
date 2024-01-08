@@ -1,6 +1,4 @@
-using Cf.Dotnet.EntityFramework.Parte4;
 using Cf.Dotnet.EntityFramework.Parte4.Models;
-using Microsoft.EntityFrameworkCore;
 
 // Creación de un logger para registrar la actividad del programa.
 var logger = LoggerFactory
