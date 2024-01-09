@@ -1,4 +1,4 @@
-using Cf.Dotnet.EntityFramework.Parte2.Models;
+using Cf.Dotnet.EntityFramework.Parte3.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cf.Dotnet.EntityFramework.Parte3;
@@ -60,27 +60,31 @@ public class DatabaseContext : DbContext
 
     /// <summary>
     ///     Método de configuración para definir opciones adicionales del contexto de base de datos.
-    ///     Se ejecuta durante la inicialización del contexto y se utiliza para configurar el proveedor de base de datos, entre otros ajustes.
+    ///     Se ejecuta durante la inicialización del contexto y se utiliza para configurar el proveedor de base de datos, entre
+    ///     otros ajustes.
     /// </summary>
     /// <param name="optionsBuilder">Constructor de opciones para configurar el contexto.</param>
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         // Configura el proveedor de base de datos SQLite si no se ha configurado previamente.
-        if (!optionsBuilder.IsConfigured) 
+        if (!optionsBuilder.IsConfigured)
             optionsBuilder.UseSqlite("Data Source=MyDatabaseName");
     }
 
     /// <summary>
     ///     Método para configurar el modelo de base de datos.
-    ///     Se utiliza para configurar aspectos del modelo, como las relaciones entre entidades, convenciones y datos iniciales.
+    ///     Se utiliza para configurar aspectos del modelo, como las relaciones entre entidades, convenciones y datos
+    ///     iniciales.
     /// </summary>
     /// <param name="modelBuilder">Constructor de modelos para definir configuraciones del modelo.</param>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         // Configura datos iniciales para la entidad Customer.
-        modelBuilder.Entity<Customer>().HasData(
-            new Customer { Id = 1, Name = "Cliente 1" },
-            new Customer { Id = 2, Name = "Cliente 2" }
-        );
+        modelBuilder
+            .Entity<Customer>()
+            .HasData(
+                new Customer { Id = 1, Name = "Cliente 1" },
+                new Customer { Id = 2, Name = "Cliente 2" }
+            );
     }
 }

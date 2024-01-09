@@ -1,4 +1,4 @@
-using Cf.Dotnet.EntityFramework.Parte2.Models;
+using Cf.Dotnet.EntityFramework.Parte3.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -18,10 +18,12 @@ public class EditModel : PageModel
 
     public async Task<IActionResult> OnGetAsync(int? id)
     {
-        if (id == null) return NotFound();
+        if (id == null)
+            return NotFound();
 
         var catalogitem = await _context.CatalogItems.FirstOrDefaultAsync(m => m.Id == id);
-        if (catalogitem == null) return NotFound();
+        if (catalogitem == null)
+            return NotFound();
         CatalogItem = catalogitem;
         return Page();
     }
@@ -30,7 +32,8 @@ public class EditModel : PageModel
     // For more details, see https://aka.ms/RazorPagesCRUD.
     public async Task<IActionResult> OnPostAsync()
     {
-        if (!ModelState.IsValid) return Page();
+        if (!ModelState.IsValid)
+            return Page();
 
         _context.Attach(CatalogItem).State = EntityState.Modified;
 

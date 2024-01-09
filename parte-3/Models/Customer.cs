@@ -1,4 +1,4 @@
-namespace Cf.Dotnet.EntityFramework.Parte2.Models;
+namespace Cf.Dotnet.EntityFramework.Parte3.Models;
 
 /// <summary>
 ///     Representa un cliente en el contexto del negocio.

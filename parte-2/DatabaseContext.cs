@@ -57,16 +57,4 @@ public class DatabaseContext : DbContext
     /// </value>
     public DbSet<Customer> Customers { get; set; } =
         null!; // DbSet<Customer> también se inicializa con null!, delegando la inicialización a EF.
-
-    /// <summary>
-    ///     Método de configuración para definir opciones adicionales del contexto de base de datos.
-    ///     Se ejecuta durante la inicialización del contexto y se utiliza para configurar el proveedor de base de datos, entre otros ajustes.
-    /// </summary>
-    /// <param name="optionsBuilder">Constructor de opciones para configurar el contexto.</param>
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        // Configura el proveedor de base de datos SQLite si no se ha configurado previamente.
-        if (!optionsBuilder.IsConfigured) 
-            optionsBuilder.UseSqlite("Data Source=MyDatabaseName");
-    }
 }
