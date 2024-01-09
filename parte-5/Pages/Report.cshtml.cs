@@ -34,7 +34,7 @@ public class ReportModel : PageModel
     {
         // Consulta SQL directa para obtener los datos de la tabla OrderReports.
         ReportItem = await _context.Database
-            .SqlQueryRaw<ReportItem>("select * from OrderReports")
+            .SqlQuery<ReportItem>($"select * from OrderReports")
             .ToListAsync();
     }
 
@@ -46,7 +46,7 @@ public class ReportModel : PageModel
     public async Task<IActionResult> OnPostRunSPAsync()
     {
         // Ejecuta el procedimiento almacenado GenerateOrderReports en la base de datos.
-        await _context.Database.ExecuteSqlRawAsync("EXEC GenerateOrderReports");
+        await _context.Database.ExecuteSqlAsync($"EXEC GenerateOrderReports");
         // Redirecciona a la misma página para ver los datos actualizados.
         return RedirectToPage();
     }

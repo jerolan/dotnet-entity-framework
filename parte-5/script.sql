@@ -17,10 +17,6 @@ CREATE TABLE OrderReports
 )
 GO;
 
--- Elimina el procedimiento almacenado GenerateOrderReports si ya existe.
-DROP PROCEDURE IF EXISTS GenerateOrderReports;
-GO;
-
 -- Crea un nuevo procedimiento almacenado llamado GenerateOrderReports.
 CREATE PROCEDURE GenerateOrderReports
 AS
