@@ -8,7 +8,8 @@ var logger = LoggerFactory
     .CreateLogger<Program>();
 
 // Creación de una instancia del contexto de la base de datos con las opciones configuradas.
-var context = new DatabaseContext();
+await using var context = new DatabaseContext();
+await using var transaction = await context.Database.BeginTransactionAsync();
 
 // Creación y adición de un nuevo cliente al contexto.
 var customer = new Customer
@@ -17,7 +18,7 @@ var customer = new Customer
 };
 
 context.Customers.Add(customer);
-context.SaveChanges();
+await context.SaveChangesAsync();
 logger.LogDebug("Customer {CustomerId} created", customer.Id);
 
 // Creación y adición de una lista de artículos del catálogo al contexto.
@@ -36,7 +37,7 @@ var catalogItems = new List<CatalogItem>
 };
 
 context.CatalogItems.AddRange(catalogItems);
-context.SaveChanges();
+await context.SaveChangesAsync();
 logger.LogDebug("Catalog items {CatalogItemIds} created", string.Join(", ", catalogItems.Select(x => x.Id)));
 
 // Búsqueda de un artículo del catálogo por su identificador.
@@ -60,4 +61,5 @@ var order = new Order
 };
 
 context.Orders.Add(order);
-context.SaveChanges();
+await context.SaveChangesAsync();
+transaction.Commit();

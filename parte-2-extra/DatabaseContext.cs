@@ -1,7 +1,8 @@
-using Cf.Dotnet.EntityFramework.Parte2.Models;
+using Cf.Dotnet.EntityFramework.Parte2Extra.ModelConfigurations;
+using Cf.Dotnet.EntityFramework.Parte2Extra.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Cf.Dotnet.EntityFramework.Parte2;
+namespace Cf.Dotnet.EntityFramework.Parte2Extra;
 
 /// <summary>
 ///     Contexto de la base de datos para la aplicación, que utiliza Entity Framework.
@@ -70,5 +71,18 @@ public class DatabaseContext : DbContext
             optionsBuilder.UseSqlServer($"Data Source=localhost,1433;User ID=sa;Password=Passw@rd;Database=MyDatabaseName;Encrypt=False")
                 .UseLoggerFactory(LoggerFactory.Create(builder =>
                     builder.AddConsole().SetMinimumLevel(LogLevel.Information)));
+
+    }
+    
+    /// <summary>
+    ///     Método es llamado por Entity Framework
+    ///     cuando el modelo de datos está siendo construido. Este método
+    ///     es el lugar ideal para aplicar configuraciones personalizadas
+    ///     y restricciones a las entidades de tu modelo.
+    /// </summary>
+    /// <param name="optionsBuilder">Constructor de opciones para configurar el contexto.</param>
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfiguration(new OrderModelConfiguration());
     }
 }

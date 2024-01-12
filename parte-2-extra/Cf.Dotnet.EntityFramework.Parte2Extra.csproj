@@ -26,8 +26,4 @@
         <None Remove="Properties\launchSettings.json"/>
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="ModelConfigurations\" />
-    </ItemGroup>
-
 </Project>
