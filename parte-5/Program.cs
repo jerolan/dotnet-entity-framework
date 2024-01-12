@@ -15,7 +15,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<DatabaseContext>(options =>
     options.UseSqlServer(
         // ADVERTENCIA: la cadena de conexión no debe usarse en entornos de producción.
-        $"Data Source=localhost,1433;User ID=sa;Password=Passw@rd;Database={databaseName};Encrypt=False"));
+        $"Server=(localdb)\\MSSQLLocalDB;Integrated Security=true;Initial Catalog=MyDatabaseNameParte5"));
 
 // Construye la aplicación web.
 var app = builder.Build();

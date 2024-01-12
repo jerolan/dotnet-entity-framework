@@ -67,7 +67,7 @@ public class DatabaseContext : DbContext
     {
         // Configura el proveedor de base de datos SQLite si no se ha configurado previamente.
         if (!optionsBuilder.IsConfigured)
-            optionsBuilder.UseSqlServer($"Data Source=localhost,1433;User ID=sa;Password=Passw@rd;Database=MyDatabaseName;Encrypt=False")
+            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Integrated Security=true;Initial Catalog=MyDatabaseNameParte2")
                 .UseLoggerFactory(LoggerFactory.Create(builder =>
                     builder.AddConsole().SetMinimumLevel(LogLevel.Information)));
     }
