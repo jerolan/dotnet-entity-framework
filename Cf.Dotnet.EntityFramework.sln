@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cf.Dotnet.EntityFramework.P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cf.Dotnet.EntityFramework.Parte5", "parte-5\Cf.Dotnet.EntityFramework.Parte5.csproj", "{A373BA5B-ABC4-4D76-B352-9A7E8B6B13FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cf.Dotnet.EntityFramework.Parte2Extra", "parte-2-extra\Cf.Dotnet.EntityFramework.Parte2Extra.csproj", "{7AED4794-F93F-41CC-9666-53B264370100}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{A373BA5B-ABC4-4D76-B352-9A7E8B6B13FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A373BA5B-ABC4-4D76-B352-9A7E8B6B13FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A373BA5B-ABC4-4D76-B352-9A7E8B6B13FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AED4794-F93F-41CC-9666-53B264370100}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AED4794-F93F-41CC-9666-53B264370100}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AED4794-F93F-41CC-9666-53B264370100}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AED4794-F93F-41CC-9666-53B264370100}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
